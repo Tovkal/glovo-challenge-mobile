@@ -1,0 +1,6 @@
+framework module Pods_GlovoMaps {
+  umbrella header "Pods-GlovoMaps-umbrella.h"
+
+  export *
+  module * { export * }
+}
