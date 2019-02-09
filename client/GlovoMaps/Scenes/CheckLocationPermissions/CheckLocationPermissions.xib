@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CheckLocationPermissionsViewController" customModule="GlovoMaps" customModuleProvider="target">
+            <connections>
+                <outlet property="shareLocationButton" destination="frj-PR-KSq" id="Z18-tt-lXe"/>
+                <outlet property="showCityListButton" destination="fjv-1P-GuG" id="VRa-9Y-Sch"/>
+                <outlet property="view" destination="PZA-LP-Z9G" id="z2P-Zg-c7H"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="PZA-LP-Z9G">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="100" translatesAutoresizingMaskIntoConstraints="NO" id="u9c-Im-SxQ">
+                    <rect key="frame" x="20" y="253.5" width="335" height="160"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="frj-PR-KSq">
+                            <rect key="frame" x="0.0" y="0.0" width="335" height="30"/>
+                            <state key="normal" title="check_location_permissions.buttons.share_location"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fjv-1P-GuG">
+                            <rect key="frame" x="0.5" y="130" width="334" height="30"/>
+                            <state key="normal" title="check_location_permissions.buttons.choose_city"/>
+                        </button>
+                    </subviews>
+                </stackView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="check_location_permissions.labels.info" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hzz-Dj-1tm">
+                    <rect key="frame" x="20" y="153" width="335" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="u9c-Im-SxQ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Pah-KB-yj0" secondAttribute="leading" constant="20" id="BK9-LD-rL0"/>
+                <constraint firstItem="u9c-Im-SxQ" firstAttribute="centerY" secondItem="PZA-LP-Z9G" secondAttribute="centerY" id="BgL-TO-Bep"/>
+                <constraint firstItem="u9c-Im-SxQ" firstAttribute="top" secondItem="hzz-Dj-1tm" secondAttribute="bottom" constant="80" id="Nbj-yb-S4X"/>
+                <constraint firstItem="Pah-KB-yj0" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="u9c-Im-SxQ" secondAttribute="trailing" constant="20" id="iS0-Hm-pzC"/>
+                <constraint firstItem="hzz-Dj-1tm" firstAttribute="leading" secondItem="Pah-KB-yj0" secondAttribute="leading" constant="20" id="qNL-db-jab"/>
+                <constraint firstItem="u9c-Im-SxQ" firstAttribute="centerX" secondItem="PZA-LP-Z9G" secondAttribute="centerX" id="tdg-WJ-IU6"/>
+                <constraint firstItem="Pah-KB-yj0" firstAttribute="trailing" secondItem="hzz-Dj-1tm" secondAttribute="trailing" constant="20" id="uV5-zF-zCK"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="Pah-KB-yj0"/>
+        </view>
+    </objects>
+</document>

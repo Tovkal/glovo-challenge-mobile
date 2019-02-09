@@ -13,6 +13,17 @@
 		95D6D403220F769800B89C2F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95D6D401220F769800B89C2F /* Main.storyboard */; };
 		95D6D405220F769A00B89C2F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95D6D404220F769A00B89C2F /* Assets.xcassets */; };
 		95D6D408220F769A00B89C2F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95D6D406220F769A00B89C2F /* LaunchScreen.storyboard */; };
+		95D6D411220F777A00B89C2F /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D6D410220F777A00B89C2F /* Coordinator.swift */; };
+		95D6D415220F779900B89C2F /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D6D414220F779900B89C2F /* ViewModel.swift */; };
+		95D6D418220F77A800B89C2F /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D6D417220F77A800B89C2F /* Localizable.swift */; };
+		95D6D41B220F77BD00B89C2F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 95D6D41A220F77BD00B89C2F /* Localizable.strings */; };
+		95D6D41D220F77D600B89C2F /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D6D41C220F77D600B89C2F /* AppCoordinator.swift */; };
+		95D6D421220F782B00B89C2F /* CheckLocationPermissions.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95D6D420220F782B00B89C2F /* CheckLocationPermissions.xib */; };
+		95D6D423220F783400B89C2F /* CheckLocationPermissionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D6D422220F783400B89C2F /* CheckLocationPermissionsViewController.swift */; };
+		95D6D425220F783E00B89C2F /* CheckLocationPermissionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D6D424220F783E00B89C2F /* CheckLocationPermissionsViewModel.swift */; };
+		95D6D427220F784600B89C2F /* CheckLocationPermissionsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D6D426220F784600B89C2F /* CheckLocationPermissionsCoordinator.swift */; };
+		95D6D42A220F79E700B89C2F /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D6D429220F79E700B89C2F /* LocationManager.swift */; };
+		95D6D430221012A900B89C2F /* CityListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D6D42F221012A900B89C2F /* CityListCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +37,17 @@
 		95D6D404220F769A00B89C2F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		95D6D407220F769A00B89C2F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		95D6D409220F769A00B89C2F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		95D6D410220F777A00B89C2F /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		95D6D414220F779900B89C2F /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		95D6D417220F77A800B89C2F /* Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
+		95D6D41A220F77BD00B89C2F /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		95D6D41C220F77D600B89C2F /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		95D6D420220F782B00B89C2F /* CheckLocationPermissions.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CheckLocationPermissions.xib; sourceTree = "<group>"; };
+		95D6D422220F783400B89C2F /* CheckLocationPermissionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckLocationPermissionsViewController.swift; sourceTree = "<group>"; };
+		95D6D424220F783E00B89C2F /* CheckLocationPermissionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckLocationPermissionsViewModel.swift; sourceTree = "<group>"; };
+		95D6D426220F784600B89C2F /* CheckLocationPermissionsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckLocationPermissionsCoordinator.swift; sourceTree = "<group>"; };
+		95D6D429220F79E700B89C2F /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		95D6D42F221012A900B89C2F /* CityListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,7 +68,6 @@
 				934BCCC7D53106BA24583E6D /* Pods-GlovoMaps.debug.xcconfig */,
 				007BF6D7BE58CF9F9E85F351 /* Pods-GlovoMaps.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -71,14 +92,81 @@
 		95D6D3FC220F769800B89C2F /* GlovoMaps */ = {
 			isa = PBXGroup;
 			children = (
+				95D6D428220F79E100B89C2F /* Managers */,
+				95D6D41E220F77F700B89C2F /* Scenes */,
+				95D6D419220F77B200B89C2F /* Resources */,
+				95D6D416220F77A100B89C2F /* Protocols */,
+				95D6D40F220F775300B89C2F /* Base */,
 				95D6D3FD220F769800B89C2F /* AppDelegate.swift */,
+				95D6D41C220F77D600B89C2F /* AppCoordinator.swift */,
 				95D6D3FF220F769800B89C2F /* ViewController.swift */,
 				95D6D401220F769800B89C2F /* Main.storyboard */,
-				95D6D404220F769A00B89C2F /* Assets.xcassets */,
 				95D6D406220F769A00B89C2F /* LaunchScreen.storyboard */,
 				95D6D409220F769A00B89C2F /* Info.plist */,
 			);
 			path = GlovoMaps;
+			sourceTree = "<group>";
+		};
+		95D6D40F220F775300B89C2F /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				95D6D410220F777A00B89C2F /* Coordinator.swift */,
+				95D6D414220F779900B89C2F /* ViewModel.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		95D6D416220F77A100B89C2F /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				95D6D417220F77A800B89C2F /* Localizable.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		95D6D419220F77B200B89C2F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				95D6D41A220F77BD00B89C2F /* Localizable.strings */,
+				95D6D404220F769A00B89C2F /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		95D6D41E220F77F700B89C2F /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				95D6D42E2210129600B89C2F /* CityList */,
+				95D6D41F220F782100B89C2F /* CheckLocationPermissions */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		95D6D41F220F782100B89C2F /* CheckLocationPermissions */ = {
+			isa = PBXGroup;
+			children = (
+				95D6D420220F782B00B89C2F /* CheckLocationPermissions.xib */,
+				95D6D422220F783400B89C2F /* CheckLocationPermissionsViewController.swift */,
+				95D6D424220F783E00B89C2F /* CheckLocationPermissionsViewModel.swift */,
+				95D6D426220F784600B89C2F /* CheckLocationPermissionsCoordinator.swift */,
+			);
+			path = CheckLocationPermissions;
+			sourceTree = "<group>";
+		};
+		95D6D428220F79E100B89C2F /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				95D6D429220F79E700B89C2F /* LocationManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		95D6D42E2210129600B89C2F /* CityList */ = {
+			isa = PBXGroup;
+			children = (
+				95D6D42F221012A900B89C2F /* CityListCoordinator.swift */,
+			);
+			path = CityList;
 			sourceTree = "<group>";
 		};
 		AD433EB43970AEAE66949743 /* Frameworks */ = {
@@ -149,7 +237,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95D6D421220F782B00B89C2F /* CheckLocationPermissions.xib in Resources */,
 				95D6D408220F769A00B89C2F /* LaunchScreen.storyboard in Resources */,
+				95D6D41B220F77BD00B89C2F /* Localizable.strings in Resources */,
 				95D6D405220F769A00B89C2F /* Assets.xcassets in Resources */,
 				95D6D403220F769800B89C2F /* Main.storyboard in Resources */,
 			);
@@ -190,6 +280,7 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-GlovoMaps/Pods-GlovoMaps-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCoreLocation/RxCoreLocation.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -197,6 +288,7 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCoreLocation.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -211,8 +303,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95D6D427220F784600B89C2F /* CheckLocationPermissionsCoordinator.swift in Sources */,
+				95D6D41D220F77D600B89C2F /* AppCoordinator.swift in Sources */,
+				95D6D42A220F79E700B89C2F /* LocationManager.swift in Sources */,
+				95D6D430221012A900B89C2F /* CityListCoordinator.swift in Sources */,
+				95D6D425220F783E00B89C2F /* CheckLocationPermissionsViewModel.swift in Sources */,
+				95D6D423220F783400B89C2F /* CheckLocationPermissionsViewController.swift in Sources */,
 				95D6D400220F769800B89C2F /* ViewController.swift in Sources */,
 				95D6D3FE220F769800B89C2F /* AppDelegate.swift in Sources */,
+				95D6D418220F77A800B89C2F /* Localizable.swift in Sources */,
+				95D6D415220F779900B89C2F /* ViewModel.swift in Sources */,
+				95D6D411220F777A00B89C2F /* Coordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

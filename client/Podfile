@@ -8,4 +8,5 @@ target 'GlovoMaps' do
   # Pods for GlovoMaps
   pod 'RxSwift'
   pod 'RxCocoa'
+  pod 'RxCoreLocation'
 end
