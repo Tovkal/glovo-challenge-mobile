@@ -16,14 +16,25 @@ class MapViewController: UIViewController {
 
     typealias CityCode = String
     private var cityCenterMap = [CityCode: CLLocationCoordinate2D]()
+    private var cityBounds = [CityCode: GMSCoordinateBounds]()
 
     private var currentZoom: Float = 14
     private let markerZoom: Float = 9
 
+    private let viewModel: MapViewModel
+
+    init(viewModel: MapViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     override func loadView() {
         let camera = GMSCameraPosition.camera(withLatitude: 41.38, longitude: 2.17, zoom: currentZoom)
         mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
-        mapView.isMyLocationEnabled = true
         view = mapView
     }
 
@@ -34,7 +45,17 @@ class MapViewController: UIViewController {
 
     func display(_ cities: [CityViewEntity]) {
         self.cities = cities
+        cacheBounds(for: cities)
         displayAllCitiesWithCurrentZoom()
+        checkIfCityInCenterOfMap(mapView.camera.target)
+    }
+
+    private func cacheBounds(for cities: [CityViewEntity]) {
+        cities.forEach { (city) in
+            let paths = getPaths(for: city)
+            let bounds = getBounds(for: paths)
+            cityBounds[city.code] = bounds
+        }
     }
 
     private func displayAllCitiesWithCurrentZoom() {
@@ -78,11 +99,18 @@ class MapViewController: UIViewController {
 
     private func centerMap(on marker: GMSMarker) {
         guard let cityCode = cityCenterMap.first(where: { $0.value == marker.position })?.key else { return }
-        guard let city = cities.first(where: { $0.code == cityCode }) else { return }
-        let paths = getPaths(for: city)
-        let bounds = getBounds(for: paths)
+        guard let bounds = cityBounds[cityCode] else { return }
         let cameraUpdate = GMSCameraUpdate.fit(bounds)
         mapView.animate(with: cameraUpdate)
+    }
+
+    private func checkIfCityInCenterOfMap(_ position: CLLocationCoordinate2D) {
+        if let cityCode = cityBounds.first(where: { $0.value.contains(position) })?.key,
+            let city = cities.first(where: { $0.code == cityCode }) {
+            viewModel.input.cityInCenterOfMap.onNext(city)
+        } else {
+            viewModel.input.cityInCenterOfMap.onNext(nil)
+        }
     }
 
     // MARK: Helpers
@@ -109,14 +137,11 @@ extension MapViewController: GMSMapViewDelegate {
     func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
         currentZoom = position.zoom
         displayAllCitiesWithCurrentZoom()
+        checkIfCityInCenterOfMap(position.target)
     }
 
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
         centerMap(on: marker)
         return true
     }
-}
-
-extension CLLocationCoordinate2D {
-    
 }

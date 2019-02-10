@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		66029C24DBA1CED08AE6A828 /* Pods_GlovoMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94ED15CABD05B05D87CC1B82 /* Pods_GlovoMaps.framework */; };
 		952295F12210639500CD473B /* CLLocationCoordinate2D+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952295F02210639500CD473B /* CLLocationCoordinate2D+Equatable.swift */; };
+		952295F3221069A900CD473B /* CityDetails.xib in Resources */ = {isa = PBXBuildFile; fileRef = 952295F2221069A900CD473B /* CityDetails.xib */; };
+		952295F522106D1000CD473B /* CityDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952295F422106D1000CD473B /* CityDetailsViewModel.swift */; };
+		952295F72210706800CD473B /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952295F62210706800CD473B /* MapViewModel.swift */; };
 		95D6D3FE220F769800B89C2F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D6D3FD220F769800B89C2F /* AppDelegate.swift */; };
 		95D6D400220F769800B89C2F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D6D3FF220F769800B89C2F /* ViewController.swift */; };
 		95D6D403220F769800B89C2F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95D6D401220F769800B89C2F /* Main.storyboard */; };
@@ -59,6 +62,9 @@
 		934BCCC7D53106BA24583E6D /* Pods-GlovoMaps.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GlovoMaps.debug.xcconfig"; path = "Target Support Files/Pods-GlovoMaps/Pods-GlovoMaps.debug.xcconfig"; sourceTree = "<group>"; };
 		94ED15CABD05B05D87CC1B82 /* Pods_GlovoMaps.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GlovoMaps.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		952295F02210639500CD473B /* CLLocationCoordinate2D+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+Equatable.swift"; sourceTree = "<group>"; };
+		952295F2221069A900CD473B /* CityDetails.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CityDetails.xib; sourceTree = "<group>"; };
+		952295F422106D1000CD473B /* CityDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDetailsViewModel.swift; sourceTree = "<group>"; };
+		952295F62210706800CD473B /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		95D6D3FA220F769800B89C2F /* GlovoMaps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GlovoMaps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95D6D3FD220F769800B89C2F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		95D6D3FF220F769800B89C2F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -361,6 +367,8 @@
 			isa = PBXGroup;
 			children = (
 				95D6D47222103F2900B89C2F /* CityDetailsViewController.swift */,
+				952295F2221069A900CD473B /* CityDetails.xib */,
+				952295F422106D1000CD473B /* CityDetailsViewModel.swift */,
 			);
 			path = CityDetails;
 			sourceTree = "<group>";
@@ -369,6 +377,7 @@
 			isa = PBXGroup;
 			children = (
 				95D6D47522103F3500B89C2F /* MapViewController.swift */,
+				952295F62210706800CD473B /* MapViewModel.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -443,6 +452,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				95D6D421220F782B00B89C2F /* CheckLocationPermissions.xib in Resources */,
+				952295F3221069A900CD473B /* CityDetails.xib in Resources */,
 				95D6D408220F769A00B89C2F /* LaunchScreen.storyboard in Resources */,
 				95D6D46A22103DA400B89C2F /* WorkingArea.xib in Resources */,
 				95D6D41B220F77BD00B89C2F /* Localizable.strings in Resources */,
@@ -561,6 +571,7 @@
 				95D6D425220F783E00B89C2F /* CheckLocationPermissionsViewModel.swift in Sources */,
 				95D6D423220F783400B89C2F /* CheckLocationPermissionsViewController.swift in Sources */,
 				95D6D464221033CD00B89C2F /* CityViewEntity.swift in Sources */,
+				952295F522106D1000CD473B /* CityDetailsViewModel.swift in Sources */,
 				95D6D400220F769800B89C2F /* ViewController.swift in Sources */,
 				95D6D47A2210414900B89C2F /* WorkingAreaViewModel.swift in Sources */,
 				952295F12210639500CD473B /* CLLocationCoordinate2D+Equatable.swift in Sources */,
@@ -573,6 +584,7 @@
 				95D6D47822103F5500B89C2F /* WorkingAreaCoordinator.swift in Sources */,
 				95D6D415220F779900B89C2F /* ViewModel.swift in Sources */,
 				95D6D45E2210286B00B89C2F /* BaseDataRepository.swift in Sources */,
+				952295F72210706800CD473B /* MapViewModel.swift in Sources */,
 				95D6D462221033BE00B89C2F /* CountryViewEntity.swift in Sources */,
 				95D6D411220F777A00B89C2F /* Coordinator.swift in Sources */,
 				95D6D4542210268B00B89C2F /* CityDataRepository.swift in Sources */,

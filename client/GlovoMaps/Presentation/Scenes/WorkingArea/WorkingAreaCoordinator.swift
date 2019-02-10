@@ -12,30 +12,29 @@ class WorkingAreaCoordinator: Coordinator {
     var childCoordinators: [Coordinator] = []
 
     private let getCitiesUseCase = GetCitiesUseCase(repository: CityDataRepository())
-    private let viewModel: WorkingAreaViewModel
 
     var rootViewController: UIViewController {
-
-        return WorkingAreaViewController(viewModel: viewModel,
-                                         cityDetailsViewController: cityDetailsViewController,
-                                         mapViewController: mapViewController)
+        return navigationController
     }
 
-    private var cityDetailsViewController: CityDetailsViewController {
-        return CityDetailsViewController()
-    }
-
-    private var mapViewController: MapViewController {
-        return MapViewController()
-    }
+    private let navigationController = UINavigationController()
 
     init(for cityCode: String?) {
-        viewModel = WorkingAreaViewModel(locationCityCode: cityCode, getCitiesUseCase: getCitiesUseCase)
+
     }
 
     func start() {
+        let cityDetailsViewModel = CityDetailsViewModel(getCitiesUseCase: getCitiesUseCase)
+        let cityDetailsViewController = CityDetailsViewController(viewModel: cityDetailsViewModel)
+
+        let mapViewModel = MapViewModel(cityInCenterOfMap: cityDetailsViewModel.input.city)
+        let mapViewController = MapViewController(viewModel: mapViewModel)
+
+        let mainViewModel = WorkingAreaViewModel(locationCityCode: "?????", getCitiesUseCase: getCitiesUseCase)
+        let mainVC = WorkingAreaViewController(viewModel: mainViewModel, cityDetailsViewController: cityDetailsViewController, mapViewController: mapViewController)
+
+        navigationController.pushViewController(mainVC, animated: true)
     }
 
     func finish() {}
 }
-

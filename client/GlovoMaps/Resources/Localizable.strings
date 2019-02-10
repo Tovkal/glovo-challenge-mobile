@@ -6,6 +6,24 @@
   Copyright © 2019 Andrés Pizá Bückmann. All rights reserved.
 */
 
+// MARK: - Common
+
+"labels.common.yes" = "Yes";
+"labels.common.no" = "Yes";
+
+// MARK: - Check Location Permissions
+
 "check_location_permissions.labels.info" = "We need a location to show you the working area of the city.\nShare your location or choose a city from a list.";
 "check_location_permissions.buttons.share_location" = "Share location";
 "check_location_permissions.buttons.choose_city" = "Choose a city from a list";
+
+// MARK: - Main
+
+"main.city_details.name" = "Name:";
+"main.city_details.code" = "Code:";
+"main.city_details.country_code" = "Country code:";
+"main.city_details.busy" = "Is Busy?:";
+"main.city_details.currency" = "Currency:";
+"main.city_details.enabled" = "Is Enabled?:";
+"main.city_details.language_code" = "Language code:";
+"main.city_details.timezone" = "Time zone:";

@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct CityViewEntity {
+struct CityViewEntity: Equatable {
     let name: String
     let code: String
 
