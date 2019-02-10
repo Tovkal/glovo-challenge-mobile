@@ -10,4 +10,5 @@ import RxSwift
 
 protocol CityRepository {
     func getCities() -> Single<[City]>
+    func getCity(for code: String) -> Single<City>
 }

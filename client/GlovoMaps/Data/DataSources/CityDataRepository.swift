@@ -16,4 +16,10 @@ class CityDataRepository: BaseDataRepository, CityRepository {
             .filterSuccessfulStatusCodes()
             .map([City].self)
     }
+
+    func getCity(for code: String) -> Single<City> {
+        return provider.rx.request(MultiTarget(CityTarget.getCity(code: code)))
+            .filterSuccessfulStatusCodes()
+            .map(City.self)
+    }
 }

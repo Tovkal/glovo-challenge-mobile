@@ -10,13 +10,19 @@ import Moya
 
 enum CityTarget {
     case getCities()
+    case getCity(code: String)
 }
 
 extension CityTarget: TargetType {
     var baseURL: URL { return ApiConstants.baseURL }
 
     var path: String {
-        return "cities"
+        switch self {
+        case .getCities:
+            return "cities"
+        case .getCity(let code):
+            return "cities/\(code)"
+        }
     }
 
     var method: Method {

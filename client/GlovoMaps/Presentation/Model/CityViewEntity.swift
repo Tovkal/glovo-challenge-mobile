@@ -11,4 +11,26 @@ import Foundation
 struct CityViewEntity {
     let name: String
     let code: String
+
+    let countryCode: String?
+    let workingArea: [String]?
+    let busy: Bool?
+    let currency: String?
+    let enabled: Bool?
+    let languageCode: String?
+    let timeZone: String?
+}
+
+extension CityViewEntity {
+    init(name: String, code: String) {
+        self.init(name: name,
+                  code: code,
+                  countryCode: nil,
+                  workingArea: nil,
+                  busy: nil,
+                  currency: nil,
+                  enabled: nil,
+                  languageCode: nil,
+                  timeZone: nil)
+    }
 }
