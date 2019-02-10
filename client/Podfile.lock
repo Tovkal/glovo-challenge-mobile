@@ -1,6 +1,11 @@
 PODS:
   - Alamofire (4.7.3)
   - Differentiator (3.1.0)
+  - GoogleMaps (2.7.0):
+    - GoogleMaps/Maps (= 2.7.0)
+  - GoogleMaps/Base (2.7.0)
+  - GoogleMaps/Maps (2.7.0):
+    - GoogleMaps/Base
   - Moya/Core (11.0.2):
     - Alamofire (~> 4.1)
     - Result (~> 3.0)
@@ -23,6 +28,7 @@ PODS:
   - SnapKit (4.0.1)
 
 DEPENDENCIES:
+  - GoogleMaps
   - Moya/RxSwift
   - RxCocoa
   - RxCoreLocation
@@ -34,6 +40,7 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
     - Differentiator
+    - GoogleMaps
     - Moya
     - Result
     - RxCocoa
@@ -45,6 +52,7 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
   Differentiator: be49ca3408f0ecfc761e4c7763d20c62be01b9ad
+  GoogleMaps: f79af95cb24d869457b1f961c93d3ce8b2f3b848
   Moya: a725035953bc1c0eb1be505ab903984501d82440
   Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
   RxCocoa: 78763c7b07d02455598d9fc3c1ad091a28b73635
@@ -53,6 +61,6 @@ SPEC CHECKSUMS:
   RxSwift: fe0fd770a43acdb7d0a53da411c9b892e69bb6e4
   SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
 
-PODFILE CHECKSUM: 5dc18f58d803ead5925cc7c47724ffa77b4c4cf1
+PODFILE CHECKSUM: a1d6e33ef8eafa7ffdb5d003e8369d52a7e609ab
 
 COCOAPODS: 1.6.0
