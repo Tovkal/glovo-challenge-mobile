@@ -24,10 +24,12 @@ class MapViewController: UIViewController {
 
     private let bag = DisposeBag()
     private let viewModel: MapViewModel
+    private let cityCode: String?
     private var location: CLLocationCoordinate2D?
 
-    init(viewModel: MapViewModel) {
+    init(viewModel: MapViewModel, cityCode: String?) {
         self.viewModel = viewModel
+        self.cityCode = cityCode
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -45,7 +47,7 @@ class MapViewController: UIViewController {
         super.viewDidLoad()
         mapView.delegate = self
 
-        if let location = LocationManager.shared.getLastPosition() {
+        if cityCode == nil, let location = LocationManager.shared.getLastPosition() {
             self.location = location.coordinate
         }
 
@@ -61,7 +63,9 @@ class MapViewController: UIViewController {
         cacheBounds(for: cities)
         displayAllCitiesWithCurrentZoom()
 
-        if let location = self.location, isLocationInCityBounds(location) {
+        if let cityCode = self.cityCode {
+            centerOnCity(with: cityCode)
+        } else if let location = self.location, isLocationInCityBounds(location) {
             let camera = GMSCameraPosition.camera(withTarget: location, zoom: 12)
             mapView.animate(to: camera)
         } else {
@@ -70,6 +74,13 @@ class MapViewController: UIViewController {
         }
 
         checkIfCityInCenterOfMap(mapView.camera.target)
+    }
+
+    func centerOnCity(with code: String) {
+        guard let city = cities.first(where: { $0.code == code }) else { return }
+        guard let position = getCoordinate(for: city) else { return }
+        let camera = GMSCameraUpdate.setTarget(position, zoom: 12)
+        mapView.animate(with: camera)
     }
 
     private func showChooseCityAlert() {
@@ -126,12 +137,16 @@ class MapViewController: UIViewController {
     }
 
     private func displayCityMarker(city: CityViewEntity) -> CLLocationCoordinate2D? {
-        guard let encodedPath = city.workingArea?.first, let path = GMSPath(fromEncodedPath: encodedPath) else { return nil }
-
-        let position = path.coordinate(at: 0)
+        guard let position = getCoordinate(for: city) else { return nil }
         let marker = GMSMarker(position: position)
         marker.map = mapView
         return position
+    }
+
+    private func getCoordinate(for city: CityViewEntity) -> CLLocationCoordinate2D? {
+        guard let encodedPath = city.workingArea?.first, let path = GMSPath(fromEncodedPath: encodedPath) else { return nil }
+
+        return path.coordinate(at: 0)
     }
 
     private func centerMap(on marker: GMSMarker) {

@@ -19,9 +19,12 @@ class WorkingAreaCoordinator: Coordinator {
 
     private let getCitiesUseCase = GetCitiesUseCase(repository: CityDataRepository())
 
+    private var cityCode: String?
     private weak var parent: UINavigationController?
+    private var workingAreaViewController: WorkingAreaViewController?
 
     init(for cityCode: String?, parentViewController: UINavigationController) {
+        self.cityCode = cityCode
         self.parent = parentViewController
     }
 
@@ -31,10 +34,13 @@ class WorkingAreaCoordinator: Coordinator {
 
         let mapViewModel = MapViewModel(cityInCenterOfMap: cityDetailsViewModel.input.city,
                                         navigator: self)
-        let mapViewController = MapViewController(viewModel: mapViewModel)
+        let mapViewController = MapViewController(viewModel: mapViewModel, cityCode: cityCode)
 
         let mainViewModel = WorkingAreaViewModel(locationCityCode: "?????", getCitiesUseCase: getCitiesUseCase)
-        let mainVC = WorkingAreaViewController(viewModel: mainViewModel, cityDetailsViewController: cityDetailsViewController, mapViewController: mapViewController)
+        let mainVC = WorkingAreaViewController(viewModel: mainViewModel,
+                                               cityDetailsViewController: cityDetailsViewController,
+                                               mapViewController: mapViewController)
+        workingAreaViewController = mainVC
 
         parent?.setViewControllers([mainVC], animated: true)
     }
@@ -54,5 +60,6 @@ extension WorkingAreaCoordinator: CityListDelegate {
     func didSelectCity(with code: String, from coordinator: Coordinator) {
         parent?.popViewController(animated: true)
         removeChildCoordinator(coordinator)
+        workingAreaViewController?.centerOnCity(with: code)
     }
 }

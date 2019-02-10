@@ -46,4 +46,8 @@ class WorkingAreaViewController: UIViewController {
             self.mapViewController.display(cities)
         }).disposed(by: bag)
     }
+
+    func centerOnCity(with code: String) {
+        mapViewController.centerOnCity(with: code)
+    }
 }
