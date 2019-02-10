@@ -1,4 +1,12 @@
 PODS:
+  - Alamofire (4.7.3)
+  - Moya/Core (11.0.2):
+    - Alamofire (~> 4.1)
+    - Result (~> 3.0)
+  - Moya/RxSwift (11.0.2):
+    - Moya/Core
+    - RxSwift (~> 4.0)
+  - Result (3.2.4)
   - RxCocoa (4.3.1):
     - RxSwift (~> 4.0)
   - RxCoreLocation (1.3.1):
@@ -10,6 +18,7 @@ PODS:
   - SnapKit (4.0.1)
 
 DEPENDENCIES:
+  - Moya/RxSwift
   - RxCocoa
   - RxCoreLocation
   - RxSwift
@@ -17,17 +26,23 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - Moya
+    - Result
     - RxCocoa
     - RxCoreLocation
     - RxSwift
     - SnapKit
 
 SPEC CHECKSUMS:
+  Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
+  Moya: a725035953bc1c0eb1be505ab903984501d82440
+  Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
   RxCocoa: 78763c7b07d02455598d9fc3c1ad091a28b73635
   RxCoreLocation: e8d0b77260e3c82186f897fe2dee6547af9fbc5d
   RxSwift: fe0fd770a43acdb7d0a53da411c9b892e69bb6e4
   SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
 
-PODFILE CHECKSUM: 33070cd589c01d91fa0a13635dccb68e74f52211
+PODFILE CHECKSUM: dace5b030f5f156402325123805a075a6774adc1
 
 COCOAPODS: 1.6.0
