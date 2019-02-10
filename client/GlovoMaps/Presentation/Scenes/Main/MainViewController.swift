@@ -1,5 +1,5 @@
 //
-//  WorkingAreaViewController.swift
+//  MainViewController.swift
 //  GlovoMaps
 //
 //  Created by Andrés Pizá Bückmann on 10/02/2019.
@@ -9,23 +9,23 @@
 import UIKit
 import RxSwift
 
-class WorkingAreaViewController: UIViewController {
+class MainViewController: UIViewController {
 
     @IBOutlet private var cityDetailsContainer: UIView!
     @IBOutlet private var mapContainer: UIView!
 
     private let bag = DisposeBag()
-    private let viewModel: WorkingAreaViewModel
+    private let viewModel: MainViewModel
     private let cityDetailsViewController: CityDetailsViewController
     private let mapViewController: MapViewController
 
-    init(viewModel: WorkingAreaViewModel,
+    init(viewModel: MainViewModel,
          cityDetailsViewController: CityDetailsViewController,
          mapViewController: MapViewController) {
         self.viewModel = viewModel
         self.cityDetailsViewController = cityDetailsViewController
         self.mapViewController = mapViewController
-        super.init(nibName: "WorkingArea", bundle: nil)
+        super.init(nibName: "Main", bundle: nil)
     }
 
     required init?(coder aDecoder: NSCoder) {

@@ -1,5 +1,5 @@
 //
-//  WorkingAreaCoordinator.swift
+//  MainCoordinator.swift
 //  GlovoMaps
 //
 //  Created by Andrés Pizá Bückmann on 10/02/2019.
@@ -14,14 +14,14 @@ protocol MapNavigator: class {
     func locationOutsideCity()
 }
 
-class WorkingAreaCoordinator: Coordinator {
+class MainCoordinator: Coordinator {
     var childCoordinators: [Coordinator] = []
 
     private let getCitiesUseCase = GetCitiesUseCase(repository: CityDataRepository())
 
     private var cityCode: String?
     private weak var parent: UINavigationController?
-    private var workingAreaViewController: WorkingAreaViewController?
+    private var mainViewController: MainViewController?
 
     init(for cityCode: String?, parentViewController: UINavigationController) {
         self.cityCode = cityCode
@@ -36,11 +36,11 @@ class WorkingAreaCoordinator: Coordinator {
                                         navigator: self)
         let mapViewController = MapViewController(viewModel: mapViewModel, cityCode: cityCode)
 
-        let mainViewModel = WorkingAreaViewModel(locationCityCode: "?????", getCitiesUseCase: getCitiesUseCase)
-        let mainVC = WorkingAreaViewController(viewModel: mainViewModel,
+        let mainViewModel = MainViewModel(locationCityCode: "?????", getCitiesUseCase: getCitiesUseCase)
+        let mainVC = MainViewController(viewModel: mainViewModel,
                                                cityDetailsViewController: cityDetailsViewController,
                                                mapViewController: mapViewController)
-        workingAreaViewController = mainVC
+        mainViewController = mainVC
 
         parent?.setViewControllers([mainVC], animated: true)
     }
@@ -48,7 +48,7 @@ class WorkingAreaCoordinator: Coordinator {
     func finish() {}
 }
 
-extension WorkingAreaCoordinator: MapNavigator {
+extension MainCoordinator: MapNavigator {
     func locationOutsideCity() {
         let coordinator = CityListCoordinator(delegate: self, parentViewController: parent)
         addChildCoordinator(coordinator)
@@ -56,10 +56,10 @@ extension WorkingAreaCoordinator: MapNavigator {
     }
 }
 
-extension WorkingAreaCoordinator: CityListDelegate {
+extension MainCoordinator: CityListDelegate {
     func didSelectCity(with code: String, from coordinator: Coordinator) {
         parent?.popViewController(animated: true)
         removeChildCoordinator(coordinator)
-        workingAreaViewController?.centerOnCity(with: code)
+        mainViewController?.centerOnCity(with: code)
     }
 }

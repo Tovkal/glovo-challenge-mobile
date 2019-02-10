@@ -41,7 +41,7 @@ class AppCoordinator: Coordinator {
     }
 
     private func showMap(for cityCode: String?) {
-        let coordinator = WorkingAreaCoordinator(for: cityCode, parentViewController: parent)
+        let coordinator = MainCoordinator(for: cityCode, parentViewController: parent)
         addChildCoordinator(coordinator)
         coordinator.start()
     }

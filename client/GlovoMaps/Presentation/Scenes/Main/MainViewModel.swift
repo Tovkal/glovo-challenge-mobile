@@ -1,5 +1,5 @@
 //
-//  WorkingAreaViewModel.swift
+//  MainViewModel.swift
 //  GlovoMaps
 //
 //  Created by Andrés Pizá Bückmann on 10/02/2019.
@@ -10,23 +10,23 @@ import RxSwift
 
 // MARK: - Input / Output
 
-struct WorkingAreaInput {
+struct MainInput {
 }
 
-struct WorkingAreaOutput {
+struct MainOutput {
     var cities: Observable<[CityViewEntity]>
 }
 
-class WorkingAreaViewModel: ViewModel {
+class MainViewModel: ViewModel {
 
-    let input: WorkingAreaInput
-    let output: WorkingAreaOutput
+    let input: MainInput
+    let output: MainOutput
 
     init(locationCityCode: String?, getCitiesUseCase: GetCitiesUseCase) {
 
         let cities = getCitiesUseCase.getCities().asObservable()
 
-        self.input = WorkingAreaInput()
-        self.output = WorkingAreaOutput(cities: cities)
+        self.input = MainInput()
+        self.output = MainOutput(cities: cities)
     }
 }

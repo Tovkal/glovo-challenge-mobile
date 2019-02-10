@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WorkingAreaViewController" customModule="GlovoMaps" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainViewController" customModule="GlovoMaps" customModuleProvider="target">
             <connections>
                 <outlet property="cityDetailsContainer" destination="i4j-uv-s2m" id="avZ-sB-40i"/>
                 <outlet property="mapContainer" destination="iCy-ZG-vii" id="RTS-ue-K0w"/>
