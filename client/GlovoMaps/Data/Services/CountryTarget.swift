@@ -13,7 +13,9 @@ enum CountryTarget {
 }
 
 extension CountryTarget: TargetType {
-    var baseURL: URL { return ApiConstants.baseURL }
+    var baseURL: URL {
+        return ApiConstants.baseURL
+    }
 
     var path: String {
         return "countries"

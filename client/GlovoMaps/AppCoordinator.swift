@@ -26,19 +26,25 @@ class AppCoordinator: Coordinator {
     func finish() {}
 
     private func showMap() {
+        showMap(for: nil)
+    }
+
+    private func showMap(for cityCode: String?) {
         // TODO
     }
 
     private func showCityList() {
-        let coordinator = CityListCoordinator()
+        let coordinator = CityListCoordinator(delegate: self)
         addChildCoordinator(coordinator)
         coordinator.start()
+        window?.rootViewController = coordinator.rootViewController
     }
 }
 
 protocol AppCoordinatorDelegate: class {
     func didGetLocationPermissions(from coordinator: Coordinator)
     func didSelectCityList(from coordinator: Coordinator)
+    func didSelectCity(with code: String, from coordinator: Coordinator)
 }
 
 extension AppCoordinator: AppCoordinatorDelegate {
@@ -50,5 +56,10 @@ extension AppCoordinator: AppCoordinatorDelegate {
     func didSelectCityList(from coordinator: Coordinator) {
         removeChildCoordinator(coordinator)
         showCityList()
+    }
+
+    func didSelectCity(with code: String, from coordinator: Coordinator) {
+        removeChildCoordinator(coordinator)
+        showMap(for: code)
     }
 }
