@@ -9,4 +9,5 @@ target 'GlovoMaps' do
   pod 'RxSwift'
   pod 'RxCocoa'
   pod 'RxCoreLocation'
+  pod 'SnapKit'
 end
