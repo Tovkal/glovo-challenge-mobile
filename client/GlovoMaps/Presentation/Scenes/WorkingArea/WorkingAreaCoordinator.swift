@@ -11,7 +11,7 @@ import UIKit
 class WorkingAreaCoordinator: Coordinator {
     var childCoordinators: [Coordinator] = []
 
-    private let getCityUseCase = GetCityUseCase(repository: CityDataRepository())
+    private let getCitiesUseCase = GetCitiesUseCase(repository: CityDataRepository())
     private let viewModel: WorkingAreaViewModel
 
     var rootViewController: UIViewController {
@@ -30,7 +30,7 @@ class WorkingAreaCoordinator: Coordinator {
     }
 
     init(for cityCode: String?) {
-        viewModel = WorkingAreaViewModel(cityCode: cityCode, getCityUseCase: getCityUseCase)
+        viewModel = WorkingAreaViewModel(locationCityCode: cityCode, getCitiesUseCase: getCitiesUseCase)
     }
 
     func start() {

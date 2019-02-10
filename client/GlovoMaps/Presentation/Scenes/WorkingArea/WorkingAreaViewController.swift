@@ -42,8 +42,8 @@ class WorkingAreaViewController: UIViewController {
     }
 
     private func bindUI() {
-        viewModel.output.city.subscribe(onNext: { city in
-            self.mapViewController.display(city)
+        viewModel.output.cities.subscribe(onNext: { (cities) in
+            self.mapViewController.display(cities)
         }).disposed(by: bag)
     }
 }

@@ -14,7 +14,8 @@ struct WorkingAreaInput {
 }
 
 struct WorkingAreaOutput {
-    var city: Observable<CityViewEntity>
+    var cities: Observable<[CityViewEntity]>
+    var cityDetails: Observable<CityViewEntity>
 }
 
 class WorkingAreaViewModel: ViewModel {
@@ -22,11 +23,12 @@ class WorkingAreaViewModel: ViewModel {
     let input: WorkingAreaInput
     let output: WorkingAreaOutput
 
-    init(cityCode: String?, getCityUseCase: GetCityUseCase) {
+    init(locationCityCode: String?, getCitiesUseCase: GetCitiesUseCase) {
 
-        let city = getCityUseCase.getCity(for: cityCode!).asObservable()
+        let cities = getCitiesUseCase.getCities().asObservable()
+        let cityDetails = getCitiesUseCase.getCity(for: locationCityCode!).asObservable()
 
         self.input = WorkingAreaInput()
-        self.output = WorkingAreaOutput(city: city)
+        self.output = WorkingAreaOutput(cities: cities, cityDetails: cityDetails)
     }
 }

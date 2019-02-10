@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		66029C24DBA1CED08AE6A828 /* Pods_GlovoMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94ED15CABD05B05D87CC1B82 /* Pods_GlovoMaps.framework */; };
+		952295F12210639500CD473B /* CLLocationCoordinate2D+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952295F02210639500CD473B /* CLLocationCoordinate2D+Equatable.swift */; };
 		95D6D3FE220F769800B89C2F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D6D3FD220F769800B89C2F /* AppDelegate.swift */; };
 		95D6D400220F769800B89C2F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D6D3FF220F769800B89C2F /* ViewController.swift */; };
 		95D6D403220F769800B89C2F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95D6D401220F769800B89C2F /* Main.storyboard */; };
@@ -50,13 +51,14 @@
 		95D6D47622103F3500B89C2F /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D6D47522103F3500B89C2F /* MapViewController.swift */; };
 		95D6D47822103F5500B89C2F /* WorkingAreaCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D6D47722103F5500B89C2F /* WorkingAreaCoordinator.swift */; };
 		95D6D47A2210414900B89C2F /* WorkingAreaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D6D4792210414900B89C2F /* WorkingAreaViewModel.swift */; };
-		95D6D47C2210434400B89C2F /* GetCityUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D6D47B2210434400B89C2F /* GetCityUseCase.swift */; };
+		95D6D47C2210434400B89C2F /* GetCitiesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D6D47B2210434400B89C2F /* GetCitiesUseCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		007BF6D7BE58CF9F9E85F351 /* Pods-GlovoMaps.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GlovoMaps.release.xcconfig"; path = "Target Support Files/Pods-GlovoMaps/Pods-GlovoMaps.release.xcconfig"; sourceTree = "<group>"; };
 		934BCCC7D53106BA24583E6D /* Pods-GlovoMaps.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GlovoMaps.debug.xcconfig"; path = "Target Support Files/Pods-GlovoMaps/Pods-GlovoMaps.debug.xcconfig"; sourceTree = "<group>"; };
 		94ED15CABD05B05D87CC1B82 /* Pods_GlovoMaps.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GlovoMaps.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		952295F02210639500CD473B /* CLLocationCoordinate2D+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+Equatable.swift"; sourceTree = "<group>"; };
 		95D6D3FA220F769800B89C2F /* GlovoMaps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GlovoMaps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95D6D3FD220F769800B89C2F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		95D6D3FF220F769800B89C2F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -101,7 +103,7 @@
 		95D6D47522103F3500B89C2F /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		95D6D47722103F5500B89C2F /* WorkingAreaCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkingAreaCoordinator.swift; sourceTree = "<group>"; };
 		95D6D4792210414900B89C2F /* WorkingAreaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkingAreaViewModel.swift; sourceTree = "<group>"; };
-		95D6D47B2210434400B89C2F /* GetCityUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCityUseCase.swift; sourceTree = "<group>"; };
+		95D6D47B2210434400B89C2F /* GetCitiesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCitiesUseCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -237,6 +239,7 @@
 				95D6D43D22101BD400B89C2F /* UITableViewCell+Identifier.swift */,
 				95D6D46D22103E9900B89C2F /* UIViewController+Childs.swift */,
 				95D6D46F22103EC600B89C2F /* UIView+Childs.swift */,
+				952295F02210639500CD473B /* CLLocationCoordinate2D+Equatable.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -295,7 +298,7 @@
 			isa = PBXGroup;
 			children = (
 				95D6D44222101E7600B89C2F /* GetCountriesUseCase.swift */,
-				95D6D47B2210434400B89C2F /* GetCityUseCase.swift */,
+				95D6D47B2210434400B89C2F /* GetCitiesUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -560,10 +563,11 @@
 				95D6D464221033CD00B89C2F /* CityViewEntity.swift in Sources */,
 				95D6D400220F769800B89C2F /* ViewController.swift in Sources */,
 				95D6D47A2210414900B89C2F /* WorkingAreaViewModel.swift in Sources */,
+				952295F12210639500CD473B /* CLLocationCoordinate2D+Equatable.swift in Sources */,
 				95D6D4462210245E00B89C2F /* Country.swift in Sources */,
 				95D6D44B221025A600B89C2F /* CountryRepository.swift in Sources */,
 				95D6D3FE220F769800B89C2F /* AppDelegate.swift in Sources */,
-				95D6D47C2210434400B89C2F /* GetCityUseCase.swift in Sources */,
+				95D6D47C2210434400B89C2F /* GetCitiesUseCase.swift in Sources */,
 				95D6D418220F77A800B89C2F /* Localizable.swift in Sources */,
 				95D6D44322101E7600B89C2F /* GetCountriesUseCase.swift in Sources */,
 				95D6D47822103F5500B89C2F /* WorkingAreaCoordinator.swift in Sources */,
