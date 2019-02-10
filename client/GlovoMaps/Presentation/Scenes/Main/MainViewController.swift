@@ -8,6 +8,7 @@
 
 import UIKit
 import RxSwift
+import RxCocoa
 
 class MainViewController: UIViewController {
 
@@ -42,7 +43,11 @@ class MainViewController: UIViewController {
     }
 
     private func bindUI() {
-        viewModel.output.cities.subscribe(onNext: { (cities) in
+        viewModel.output.cities.asDriver(onErrorRecover: { (error) -> SharedSequence<DriverSharingStrategy, [CityViewEntity]> in
+            let alert = UIAlertController.createAlert(for: error)
+            self.present(alert, animated: true, completion: nil)
+            return Driver.just([CityViewEntity]())
+        }).drive(onNext: { cities in
             self.mapViewController.display(cities)
         }).disposed(by: bag)
     }

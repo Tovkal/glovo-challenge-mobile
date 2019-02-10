@@ -75,7 +75,12 @@ class CityListViewController: UIViewController {
             .disposed(by: bag)
 
         viewModel.output.items
-            .bind(to: tableView.rx.items(dataSource: dataSource))
+            .asDriver(onErrorRecover: { (error) -> SharedSequence<DriverSharingStrategy, [CountryViewEntity]> in
+                let alert = UIAlertController.createAlert(for: error)
+                self.present(alert, animated: true, completion: nil)
+                return Driver.just([CountryViewEntity]())
+            })
+            .drive(tableView.rx.items(dataSource: dataSource))
             .disposed(by: bag)
 
         viewModel.output.isLoading

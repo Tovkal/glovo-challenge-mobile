@@ -8,6 +8,7 @@
 
 import UIKit
 import RxSwift
+import RxCocoa
 
 class CityDetailsViewController: UIViewController {
 
@@ -38,8 +39,14 @@ class CityDetailsViewController: UIViewController {
     }
 
     private func bindUI() {
-        viewModel.output.cityDetails.distinctUntilChanged({ $0 == $1 })
-            .subscribe(onNext: { [weak self] city in
+        viewModel.output.cityDetails
+            .asDriver(onErrorRecover: { (error) -> SharedSequence<DriverSharingStrategy, CityViewEntity?> in
+                let alert = UIAlertController.createAlert(for: error)
+                self.present(alert, animated: true, completion: nil)
+                return Driver.just(nil)
+            })
+            .distinctUntilChanged({ $0 == $1 })
+            .drive(onNext: { [weak self] city in
                 self?.updateCityDetails(with: city)
             }).disposed(by: bag)
     }

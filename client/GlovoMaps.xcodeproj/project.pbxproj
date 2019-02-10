@@ -12,6 +12,7 @@
 		952295F3221069A900CD473B /* CityDetails.xib in Resources */ = {isa = PBXBuildFile; fileRef = 952295F2221069A900CD473B /* CityDetails.xib */; };
 		952295F522106D1000CD473B /* CityDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952295F422106D1000CD473B /* CityDetailsViewModel.swift */; };
 		952295F72210706800CD473B /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952295F62210706800CD473B /* MapViewModel.swift */; };
+		952295F92210D24800CD473B /* UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952295F82210D24800CD473B /* UIAlertController.swift */; };
 		95D6D3FE220F769800B89C2F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D6D3FD220F769800B89C2F /* AppDelegate.swift */; };
 		95D6D400220F769800B89C2F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D6D3FF220F769800B89C2F /* ViewController.swift */; };
 		95D6D403220F769800B89C2F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95D6D401220F769800B89C2F /* Main.storyboard */; };
@@ -65,6 +66,7 @@
 		952295F2221069A900CD473B /* CityDetails.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CityDetails.xib; sourceTree = "<group>"; };
 		952295F422106D1000CD473B /* CityDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDetailsViewModel.swift; sourceTree = "<group>"; };
 		952295F62210706800CD473B /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
+		952295F82210D24800CD473B /* UIAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertController.swift; sourceTree = "<group>"; };
 		95D6D3FA220F769800B89C2F /* GlovoMaps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GlovoMaps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95D6D3FD220F769800B89C2F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		95D6D3FF220F769800B89C2F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -246,6 +248,7 @@
 				95D6D46D22103E9900B89C2F /* UIViewController+Childs.swift */,
 				95D6D46F22103EC600B89C2F /* UIView+Childs.swift */,
 				952295F02210639500CD473B /* CLLocationCoordinate2D+Equatable.swift */,
+				952295F82210D24800CD473B /* UIAlertController.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -579,6 +582,7 @@
 				95D6D44B221025A600B89C2F /* CountryRepository.swift in Sources */,
 				95D6D3FE220F769800B89C2F /* AppDelegate.swift in Sources */,
 				95D6D47C2210434400B89C2F /* GetCitiesUseCase.swift in Sources */,
+				952295F92210D24800CD473B /* UIAlertController.swift in Sources */,
 				95D6D418220F77A800B89C2F /* Localizable.swift in Sources */,
 				95D6D44322101E7600B89C2F /* GetCountriesUseCase.swift in Sources */,
 				95D6D47822103F5500B89C2F /* MainCoordinator.swift in Sources */,
