@@ -15,7 +15,7 @@ import RxDataSources
 class CityListViewController: UIViewController {
 
     private var tableView: UITableView!
-    private var activityIndicator: UIActivityIndicatorView!
+    private var loader: Loader!
 
     private let viewModel: CityListViewModel
     private let bag = DisposeBag()
@@ -44,14 +44,14 @@ class CityListViewController: UIViewController {
         tableView = UITableView(frame: .zero)
         view.addSubview(tableView)
 
-        activityIndicator = UIActivityIndicatorView()
-        view.addSubview(activityIndicator)
+        loader = Loader()
+        view.addSubview(loader)
 
         tableView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
 
-        activityIndicator.snp.makeConstraints { (make) in
+        loader.snp.makeConstraints { (make) in
             make.center.equalToSuperview()
         }
     }
@@ -80,11 +80,7 @@ class CityListViewController: UIViewController {
 
         viewModel.output.isLoading
             .subscribe(onNext: { [weak self] (isLoading) in
-                if isLoading {
-                    self?.activityIndicator.startAnimating()
-                } else {
-                    self?.activityIndicator.stopAnimating()
-                }
+                self?.loader.animate(isLoading)
             })
             .disposed(by: bag)
 

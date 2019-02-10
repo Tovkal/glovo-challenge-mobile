@@ -41,6 +41,7 @@
 		95D6D45E2210286B00B89C2F /* BaseDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D6D45D2210286B00B89C2F /* BaseDataRepository.swift */; };
 		95D6D462221033BE00B89C2F /* CountryViewEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D6D461221033BE00B89C2F /* CountryViewEntity.swift */; };
 		95D6D464221033CD00B89C2F /* CityViewEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D6D463221033CD00B89C2F /* CityViewEntity.swift */; };
+		95D6D46722103BE100B89C2F /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D6D46622103BE100B89C2F /* Loader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,6 +83,7 @@
 		95D6D45D2210286B00B89C2F /* BaseDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseDataRepository.swift; sourceTree = "<group>"; };
 		95D6D461221033BE00B89C2F /* CountryViewEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryViewEntity.swift; sourceTree = "<group>"; };
 		95D6D463221033CD00B89C2F /* CityViewEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityViewEntity.swift; sourceTree = "<group>"; };
+		95D6D46622103BE100B89C2F /* Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -219,6 +221,7 @@
 		95D6D43F22101E5000B89C2F /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				95D6D46522103BD500B89C2F /* Common Views */,
 				95D6D460221033B600B89C2F /* Model */,
 				95D6D41E220F77F700B89C2F /* Scenes */,
 				95D6D40F220F775300B89C2F /* Base */,
@@ -306,6 +309,14 @@
 				95D6D463221033CD00B89C2F /* CityViewEntity.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		95D6D46522103BD500B89C2F /* Common Views */ = {
+			isa = PBXGroup;
+			children = (
+				95D6D46622103BE100B89C2F /* Loader.swift */,
+			);
+			path = "Common Views";
 			sourceTree = "<group>";
 		};
 		AD433EB43970AEAE66949743 /* Frameworks */ = {
@@ -462,6 +473,7 @@
 				95D6D41D220F77D600B89C2F /* AppCoordinator.swift in Sources */,
 				95D6D44D221025B300B89C2F /* CityRepository.swift in Sources */,
 				95D6D42A220F79E700B89C2F /* LocationManager.swift in Sources */,
+				95D6D46722103BE100B89C2F /* Loader.swift in Sources */,
 				95D6D430221012A900B89C2F /* CityListCoordinator.swift in Sources */,
 				95D6D43E22101BD400B89C2F /* UITableViewCell+Identifier.swift in Sources */,
 				95D6D425220F783E00B89C2F /* CheckLocationPermissionsViewModel.swift in Sources */,
