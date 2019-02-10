@@ -8,26 +8,26 @@
 
 import UIKit
 
+protocol CityListDelegate: class {
+    func didSelectCity(with code: String, from coordinator: Coordinator)
+}
+
 class CityListCoordinator: Coordinator {
     var childCoordinators: [Coordinator] = []
 
-    var rootViewController: UIViewController {
-        return navigationController
-    }
-
-    private lazy var navigationController = UINavigationController()
-
     private let useCase = GetCountriesUseCase(countryRepository: CountryDataRepository(), cityRepository: CityDataRepository())
-    private weak var delegate: AppCoordinatorDelegate?
+    private weak var delegate: CityListDelegate?
+    private weak var parent: UINavigationController?
 
-    init(delegate: AppCoordinatorDelegate?) {
+    init(delegate: CityListDelegate?, parentViewController: UINavigationController?) {
         self.delegate = delegate
+        self.parent = parentViewController
     }
 
     func start() {
         let viewModel = CityListViewModel(getCountriesUseCase: useCase, navigator: self)
         let viewController = CityListViewController(viewModel: viewModel)
-        navigationController.setViewControllers([viewController], animated: true)
+        parent?.pushViewController(viewController, animated: true)
     }
 
     func finish() {}

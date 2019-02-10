@@ -12,9 +12,11 @@ import RxSwift
 
 struct MapInput {
     var cityInCenterOfMap: AnyObserver<CityViewEntity?>
+    var locationOutsideCity: AnyObserver<Void>
 }
 
 struct MapOutput {
+    var navigate: Observable<Void>
 }
 
 class MapViewModel: ViewModel {
@@ -22,9 +24,15 @@ class MapViewModel: ViewModel {
     let input: MapInput
     let output: MapOutput
 
-    init(cityInCenterOfMap: AnyObserver<CityViewEntity?>) {
+    private let locationOutsideCitySubject = PublishSubject<Void>()
 
-        self.input = MapInput(cityInCenterOfMap: cityInCenterOfMap)
-        self.output = MapOutput()
+    init(cityInCenterOfMap: AnyObserver<CityViewEntity?>, navigator: MapNavigator) {
+
+        let navigate = locationOutsideCitySubject.do(onNext: { _ in
+            navigator.locationOutsideCity()
+        })
+
+        self.input = MapInput(cityInCenterOfMap: cityInCenterOfMap, locationOutsideCity: locationOutsideCitySubject.asObserver())
+        self.output = MapOutput(navigate: navigate)
     }
 }

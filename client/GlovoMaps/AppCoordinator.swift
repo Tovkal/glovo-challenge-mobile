@@ -12,39 +12,50 @@ class AppCoordinator: Coordinator {
     var childCoordinators: [Coordinator] = []
 
     private let window: UIWindow?
+    private let parent = UINavigationController()
 
     init(window: UIWindow?) {
         self.window = window
+        window?.rootViewController = parent
+        window?.makeKeyAndVisible()
     }
 
     func start() {
-        let coordinator = CheckLocationPermissionsCoordinator(window: window, delegate: self)
-        addChildCoordinator(coordinator)
-        coordinator.start()
+        if LocationManager.shared.isAuthorized() {
+            showMap()
+        } else {
+            showCheckLocationPermissions()
+        }
     }
 
     func finish() {}
+
+    private func showCheckLocationPermissions() {
+        let coordinator = CheckLocationPermissionsCoordinator(parentViewController: parent, delegate: self)
+        addChildCoordinator(coordinator)
+        coordinator.start()
+    }
 
     private func showMap() {
         showMap(for: nil)
     }
 
     private func showMap(for cityCode: String?) {
-        // TODO
+        let coordinator = WorkingAreaCoordinator(for: cityCode, parentViewController: parent)
+        addChildCoordinator(coordinator)
+        coordinator.start()
     }
 
     private func showCityList() {
-        let coordinator = CityListCoordinator(delegate: self)
+        let coordinator = CityListCoordinator(delegate: self, parentViewController: parent)
         addChildCoordinator(coordinator)
         coordinator.start()
-        window?.rootViewController = coordinator.rootViewController
     }
 }
 
 protocol AppCoordinatorDelegate: class {
     func didGetLocationPermissions(from coordinator: Coordinator)
     func didSelectCityList(from coordinator: Coordinator)
-    func didSelectCity(with code: String, from coordinator: Coordinator)
 }
 
 extension AppCoordinator: AppCoordinatorDelegate {
@@ -57,7 +68,9 @@ extension AppCoordinator: AppCoordinatorDelegate {
         removeChildCoordinator(coordinator)
         showCityList()
     }
+}
 
+extension AppCoordinator: CityListDelegate {
     func didSelectCity(with code: String, from coordinator: Coordinator) {
         removeChildCoordinator(coordinator)
         showMap(for: code)

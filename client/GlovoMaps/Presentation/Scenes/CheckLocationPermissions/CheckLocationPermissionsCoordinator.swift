@@ -11,19 +11,18 @@ import UIKit
 class CheckLocationPermissionsCoordinator: Coordinator {
     var childCoordinators: [Coordinator] = []
 
-    private let window: UIWindow?
+    private let parent: UINavigationController?
     private weak var delegate: AppCoordinatorDelegate?
 
-    init(window: UIWindow?, delegate: AppCoordinatorDelegate?) {
-        self.window = window
+    init(parentViewController: UINavigationController, delegate: AppCoordinatorDelegate?) {
+        self.parent = parentViewController
         self.delegate = delegate
     }
 
     func start() {
         let viewModel = CheckLocationPermissionsViewModel(navigator: self)
         let vc = CheckLocationPermissionsViewController(viewModel: viewModel)
-        window?.rootViewController = vc
-        window?.makeKeyAndVisible()
+        parent?.setViewControllers([vc], animated: true)
     }
 
     func finish() {}

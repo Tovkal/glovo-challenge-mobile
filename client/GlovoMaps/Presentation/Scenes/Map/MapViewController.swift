@@ -8,6 +8,7 @@
 
 import UIKit
 import GoogleMaps
+import RxSwift
 
 class MapViewController: UIViewController {
 
@@ -21,7 +22,9 @@ class MapViewController: UIViewController {
     private var currentZoom: Float = 14
     private let markerZoom: Float = 9
 
+    private let bag = DisposeBag()
     private let viewModel: MapViewModel
+    private var location: CLLocationCoordinate2D?
 
     init(viewModel: MapViewModel) {
         self.viewModel = viewModel
@@ -33,7 +36,7 @@ class MapViewController: UIViewController {
     }
 
     override func loadView() {
-        let camera = GMSCameraPosition.camera(withLatitude: 41.38, longitude: 2.17, zoom: currentZoom)
+        let camera = GMSCameraPosition.camera(withLatitude: 0, longitude: 0, zoom: currentZoom)
         mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
         view = mapView
     }
@@ -41,13 +44,47 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
+
+        if let location = LocationManager.shared.getLastPosition() {
+            self.location = location.coordinate
+        }
+
+        bindUI()
+    }
+
+    private func bindUI() {
+        viewModel.output.navigate.subscribe().disposed(by: bag)
     }
 
     func display(_ cities: [CityViewEntity]) {
         self.cities = cities
         cacheBounds(for: cities)
         displayAllCitiesWithCurrentZoom()
+
+        if let location = self.location, isLocationInCityBounds(location) {
+            let camera = GMSCameraPosition.camera(withTarget: location, zoom: 12)
+            mapView.animate(to: camera)
+        } else {
+            showChooseCityAlert()
+            return
+        }
+
         checkIfCityInCenterOfMap(mapView.camera.target)
+    }
+
+    private func showChooseCityAlert() {
+        let alert = UIAlertController(title: "main.location_outside_city.alert.title".localized,
+                                      message: "main.location_outside_city.alert.message".localized,
+                                      preferredStyle: .alert)
+        let action = UIAlertAction(title: "main.location_outside_city.alert.action".localized, style: .default) { _ in
+            self.viewModel.input.locationOutsideCity.onNext(Void())
+        }
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
+    }
+
+    private func isLocationInCityBounds(_ location: CLLocationCoordinate2D) -> Bool {
+        return cityBounds.contains(where: { $0.value.contains(location) })
     }
 
     private func cacheBounds(for cities: [CityViewEntity]) {

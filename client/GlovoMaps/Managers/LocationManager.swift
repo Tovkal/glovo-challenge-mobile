@@ -11,14 +11,22 @@ import RxCocoa
 import CoreLocation
 import RxCoreLocation
 
-class LocationManager {
+class LocationManager: NSObject {
 
     static let shared = LocationManager()
 
     private static let validStatus: [CLAuthorizationStatus] = [.authorizedAlways, .authorizedWhenInUse]
     private let locationManager = CLLocationManager()
+    private let bag = DisposeBag()
 
-    private init() {}
+    private let lastLocation = BehaviorSubject<CLLocation?>(value: nil)
+
+    private override init() {
+        super.init()
+        locationManager.startUpdatingLocation()
+        locationManager.delegate = self
+        locationManager.rx.location.bind(to: lastLocation).disposed(by: bag)
+    }
 
     func hasLocationPermissions() -> Single<Bool> {
         return Single.create(subscribe: { (single) -> Disposable in
@@ -36,7 +44,27 @@ class LocationManager {
         })
     }
 
+    func isAuthorized() -> Bool {
+        return LocationManager.validStatus.contains(CLLocationManager.authorizationStatus())
+    }
+
     func isAuthorized() -> Observable<Bool> {
         return locationManager.rx.didChangeAuthorization.map({ LocationManager.validStatus.contains($1) })
+    }
+
+    func getLastPosition() -> CLLocation? {
+        do {
+            return try lastLocation.value()
+        } catch {
+            return nil
+        }
+    }
+}
+
+extension LocationManager: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if LocationManager.validStatus.contains(status) {
+            locationManager.startUpdatingLocation()
+        }
     }
 }

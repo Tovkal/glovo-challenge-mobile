@@ -8,33 +8,51 @@
 
 import UIKit
 
+// MARK: - MapNavigator
+
+protocol MapNavigator: class {
+    func locationOutsideCity()
+}
+
 class WorkingAreaCoordinator: Coordinator {
     var childCoordinators: [Coordinator] = []
 
     private let getCitiesUseCase = GetCitiesUseCase(repository: CityDataRepository())
 
-    var rootViewController: UIViewController {
-        return navigationController
-    }
+    private weak var parent: UINavigationController?
 
-    private let navigationController = UINavigationController()
-
-    init(for cityCode: String?) {
-
+    init(for cityCode: String?, parentViewController: UINavigationController) {
+        self.parent = parentViewController
     }
 
     func start() {
         let cityDetailsViewModel = CityDetailsViewModel(getCitiesUseCase: getCitiesUseCase)
         let cityDetailsViewController = CityDetailsViewController(viewModel: cityDetailsViewModel)
 
-        let mapViewModel = MapViewModel(cityInCenterOfMap: cityDetailsViewModel.input.city)
+        let mapViewModel = MapViewModel(cityInCenterOfMap: cityDetailsViewModel.input.city,
+                                        navigator: self)
         let mapViewController = MapViewController(viewModel: mapViewModel)
 
         let mainViewModel = WorkingAreaViewModel(locationCityCode: "?????", getCitiesUseCase: getCitiesUseCase)
         let mainVC = WorkingAreaViewController(viewModel: mainViewModel, cityDetailsViewController: cityDetailsViewController, mapViewController: mapViewController)
 
-        navigationController.pushViewController(mainVC, animated: true)
+        parent?.setViewControllers([mainVC], animated: true)
     }
 
     func finish() {}
+}
+
+extension WorkingAreaCoordinator: MapNavigator {
+    func locationOutsideCity() {
+        let coordinator = CityListCoordinator(delegate: self, parentViewController: parent)
+        addChildCoordinator(coordinator)
+        coordinator.start()
+    }
+}
+
+extension WorkingAreaCoordinator: CityListDelegate {
+    func didSelectCity(with code: String, from coordinator: Coordinator) {
+        parent?.popViewController(animated: true)
+        removeChildCoordinator(coordinator)
+    }
 }

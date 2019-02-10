@@ -27,3 +27,6 @@
 "main.city_details.enabled" = "Is Enabled?:";
 "main.city_details.language_code" = "Language code:";
 "main.city_details.timezone" = "Time zone:";
+"main.location_outside_city.alert.title" = "Atention";
+"main.location_outside_city.alert.message" = "Your GPS location is outside a working area. You need to manually choose the city you want to look at.";
+"main.location_outside_city.alert.action" = "OK";

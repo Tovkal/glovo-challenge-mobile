@@ -15,7 +15,6 @@ struct WorkingAreaInput {
 
 struct WorkingAreaOutput {
     var cities: Observable<[CityViewEntity]>
-    var cityDetails: Observable<CityViewEntity>
 }
 
 class WorkingAreaViewModel: ViewModel {
@@ -26,9 +25,8 @@ class WorkingAreaViewModel: ViewModel {
     init(locationCityCode: String?, getCitiesUseCase: GetCitiesUseCase) {
 
         let cities = getCitiesUseCase.getCities().asObservable()
-        let cityDetails = getCitiesUseCase.getCity(for: locationCityCode!).asObservable()
 
         self.input = WorkingAreaInput()
-        self.output = WorkingAreaOutput(cities: cities, cityDetails: cityDetails)
+        self.output = WorkingAreaOutput(cities: cities)
     }
 }
