@@ -17,6 +17,7 @@ struct CheckLocationPermissionsInput {
 
 struct CheckLocationPermissionsOutput {
     var navigate: Observable<Void>
+    var isLoading: Observable<Bool>
 }
 
 // MARK: - Navigator
@@ -35,6 +36,8 @@ class CheckLocationPermissionsViewModel: ViewModel {
     private let showCityListSubject = PublishSubject<Void>()
 
     init(navigator: CheckLocationPermissionsNavigator) {
+        let isLoading = BehaviorSubject<Bool>(value: false)
+
         let navigateToRequestPermissions = requestLocationPermissionsSubject
             .flatMap { _ in
                 return LocationManager.shared.requestPermissions().asObservable().map({ _ in Void() })
@@ -42,6 +45,9 @@ class CheckLocationPermissionsViewModel: ViewModel {
 
         let isAuthorized = LocationManager.shared.isAuthorized()
             .filter({ $0 })
+            .do(onNext: { _ in
+                isLoading.onNext(true)
+            })
         let locations = LocationManager.shared.getLocation()
             .filter { $0 != nil }
             .map { $0! }
@@ -49,6 +55,7 @@ class CheckLocationPermissionsViewModel: ViewModel {
 
         let navigateToMap = Observable.combineLatest(isAuthorized, locations)
             .do(onNext: { _ in
+                isLoading.onNext(false)
                 navigator.didGetLocationPermissions()
             })
             .map({ _ in Void() })
@@ -58,8 +65,11 @@ class CheckLocationPermissionsViewModel: ViewModel {
                 navigator.didSelectShowCityList()
             })
 
+        let navigate = Observable.merge(navigateToRequestPermissions, navigateToMap, navigateToCityList)
+
         self.input = CheckLocationPermissionsInput(requestLocationPermissions: requestLocationPermissionsSubject.asObserver(),
                                                    showCityList: showCityListSubject.asObserver())
-        self.output = CheckLocationPermissionsOutput(navigate: Observable.merge(navigateToRequestPermissions, navigateToMap, navigateToCityList))
+        self.output = CheckLocationPermissionsOutput(navigate: navigate,
+                                                     isLoading: isLoading.asObservable())
     }
 }

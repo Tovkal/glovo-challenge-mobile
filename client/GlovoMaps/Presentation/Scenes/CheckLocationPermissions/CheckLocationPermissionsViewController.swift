@@ -18,6 +18,8 @@ class CheckLocationPermissionsViewController: UIViewController {
     private let viewModel: CheckLocationPermissionsViewModel
     private let bag = DisposeBag()
 
+    private var loader: Loader!
+
     init(viewModel: CheckLocationPermissionsViewModel) {
         self.viewModel = viewModel
         super.init(nibName: "CheckLocationPermissions", bundle: nil)
@@ -29,7 +31,17 @@ class CheckLocationPermissionsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        configUI()
         bindUI()
+    }
+
+    private func configUI() {
+        loader = Loader()
+        view.addSubview(loader)
+
+        loader.snp.makeConstraints { (make) in
+            make.center.equalToSuperview()
+        }
     }
 
     private func bindUI() {
@@ -37,5 +49,10 @@ class CheckLocationPermissionsViewController: UIViewController {
         showCityListButton.rx.tap.bind(to: viewModel.input.showCityList).disposed(by: bag)
 
         viewModel.output.navigate.subscribe().disposed(by: bag)
+        viewModel.output.isLoading
+            .subscribe(onNext: { [weak self] (isLoading) in
+                self?.loader.animate(isLoading)
+            })
+            .disposed(by: bag)
     }
 }
