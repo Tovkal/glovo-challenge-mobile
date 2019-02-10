@@ -52,6 +52,10 @@ class LocationManager: NSObject {
         return locationManager.rx.didChangeAuthorization.map({ LocationManager.validStatus.contains($1) })
     }
 
+    func getLocation() -> Observable<CLLocation?> {
+        return locationManager.rx.location
+    }
+
     func getLastPosition() -> CLLocation? {
         do {
             return try lastLocation.value()

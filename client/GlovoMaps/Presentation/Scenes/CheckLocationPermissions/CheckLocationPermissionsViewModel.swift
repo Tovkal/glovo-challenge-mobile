@@ -40,8 +40,14 @@ class CheckLocationPermissionsViewModel: ViewModel {
                 return LocationManager.shared.requestPermissions().asObservable().map({ _ in Void() })
         }
 
-        let navigateToMap = LocationManager.shared.isAuthorized()
+        let isAuthorized = LocationManager.shared.isAuthorized()
             .filter({ $0 })
+        let locations = LocationManager.shared.getLocation()
+            .filter { $0 != nil }
+            .map { $0! }
+            .take(1)
+
+        let navigateToMap = Observable.combineLatest(isAuthorized, locations)
             .do(onNext: { _ in
                 navigator.didGetLocationPermissions()
             })
