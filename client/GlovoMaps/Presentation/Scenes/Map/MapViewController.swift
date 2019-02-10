@@ -98,6 +98,7 @@ class MapViewController: UIViewController {
         return cityBounds.contains(where: { $0.value.contains(location) })
     }
 
+    // Calculates the bounds for every city
     private func cacheBounds(for cities: [CityViewEntity]) {
         cities.forEach { (city) in
             let paths = getPaths(for: city)
@@ -107,6 +108,7 @@ class MapViewController: UIViewController {
     }
 
     private func displayAllCitiesWithCurrentZoom() {
+        // Switches between markers and working areas according to the current zoom level
         if currentZoom > markerZoom {
             displayAllCitiesWorkingAreas()
         } else {
